@@ -1,0 +1,28 @@
+{
+    "display_information": {
+        "name": "AWS Security Hub v2",
+        "description": "AWS Security Hub v2 Findings Bot",
+        "background_color": "#dd344c"
+    },
+    "features": {
+        "bot_user": {
+            "display_name": "AWS Security Hub v2",
+            "always_online": false
+        }
+    },
+    "oauth_config": {
+        "scopes": {
+            "bot": [
+                "channels:join",
+                "channels:read",
+                "chat:write.public",
+                "chat:write"
+            ]
+        }
+    },
+    "settings": {
+        "org_deploy_enabled": false,
+        "socket_mode_enabled": false,
+        "token_rotation_enabled": false
+    }
+}

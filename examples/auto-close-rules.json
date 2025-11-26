@@ -1,0 +1,109 @@
+[
+  {
+    "name": "auto-close-github-runner-new-binaries",
+    "enabled": true,
+    "filters": {
+      "finding_types": [
+        "Execution:Runtime/NewBinaryExecuted"
+      ],
+      "resource_tags": [
+        {
+          "name": "component-type",
+          "value": "github-action-runners"
+        }
+      ]
+    },
+    "action": {
+      "status_id": 5,
+      "comment": "Auto-closed: Expected behavior for GitHub Actions CI/CD runners"
+    },
+    "skip_notification": true
+  },
+  {
+    "name": "suppress-inspector-low-in-dev",
+    "enabled": true,
+    "filters": {
+      "product_name": [
+        "Inspector"
+      ],
+      "severity": [
+        "Low"
+      ],
+      "accounts": [
+        "123456789012"
+      ]
+    },
+    "action": {
+      "status_id": 3,
+      "comment": "Auto-suppressed: Low severity Inspector findings in dev account"
+    },
+    "skip_notification": false
+  },
+  {
+    "name": "resolve-approved-scanner-activity",
+    "enabled": true,
+    "filters": {
+      "finding_types": [
+        "Recon:EC2/PortProbeUnprotectedPort"
+      ],
+      "resource_types": [
+        "AWS::EC2::Instance"
+      ],
+      "resource_tags": [
+        {
+          "name": "ScannerApproved",
+          "value": "true"
+        }
+      ]
+    },
+    "action": {
+      "status_id": 4,
+      "comment": "Auto-resolved: Approved security scanner activity"
+    },
+    "skip_notification": true
+  },
+  {
+    "name": "suppress-guardduty-cryptocurrency-mining-test-env",
+    "enabled": true,
+    "filters": {
+      "finding_types": [
+        "CryptoCurrency:EC2/BitcoinTool.B!DNS"
+      ],
+      "product_name": [
+        "GuardDuty"
+      ],
+      "resource_tags": [
+        {
+          "name": "Environment",
+          "value": "test"
+        }
+      ]
+    },
+    "action": {
+      "status_id": 3,
+      "comment": "Auto-suppressed: Cryptocurrency testing in isolated test environment"
+    },
+    "skip_notification": true
+  },
+  {
+    "name": "suppress-macie-findings-in-sandbox",
+    "enabled": true,
+    "filters": {
+      "product_name": [
+        "Macie"
+      ],
+      "accounts": [
+        "999888777666"
+      ],
+      "severity": [
+        "Low",
+        "Medium"
+      ]
+    },
+    "action": {
+      "status_id": 3,
+      "comment": "Auto-suppressed: Macie findings in sandbox account"
+    },
+    "skip_notification": true
+  }
+]

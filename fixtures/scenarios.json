@@ -1,0 +1,591 @@
+[
+  {
+    "name": "auto_close_github_runner_new_binary",
+    "description": "Auto-close new binary execution finding on GitHub Actions runner",
+    "event_payload": {
+      "version": "0",
+      "id": "test-event-1",
+      "detail-type": "Findings Imported V2",
+      "source": "aws.securityhub",
+      "account": "123456789012",
+      "time": "2025-10-03T20:49:21Z",
+      "region": "us-east-1",
+      "detail": {
+        "findings": [
+          {
+            "activity_id": 1,
+            "activity_name": "Create",
+            "category_name": "Findings",
+            "category_uid": 2,
+            "class_name": "Detection Finding",
+            "class_uid": 2004,
+            "cloud": {
+              "account": {
+                "type": "AWS Account",
+                "type_id": 10,
+                "uid": "123456789012"
+              },
+              "provider": "AWS",
+              "region": "us-east-1"
+            },
+            "finding_info": {
+              "created_time": 1759524561464,
+              "created_time_dt": "2025-10-03T20:49:21.464Z",
+              "title": "A container has executed a newly created binary file.",
+              "types": [
+                "Threats",
+                "Execution:Runtime/NewBinaryExecuted"
+              ],
+              "uid": "arn:aws:guardduty:us-east-1:123456789012:detector/abc123/finding/finding-001"
+            },
+            "metadata": {
+              "product": {
+                "name": "GuardDuty",
+                "uid": "arn:aws:securityhub:us-east-1::productv2/aws/guardduty",
+                "vendor_name": "AWS"
+              },
+              "uid": "test-finding-001",
+              "version": "1.6.0"
+            },
+            "resources": [
+              {
+                "data": {
+                  "instance_id": "i-0123456789abcdef0",
+                  "tags": [
+                    {
+                      "key": "component-type",
+                      "value": "github-action-runners"
+                    },
+                    {
+                      "key": "environment",
+                      "value": "production"
+                    }
+                  ]
+                },
+                "region": "us-east-1",
+                "tags": [
+                  {
+                    "name": "component-type",
+                    "value": "github-action-runners"
+                  },
+                  {
+                    "name": "environment",
+                    "value": "production"
+                  }
+                ],
+                "type": "AwsEc2Instance",
+                "uid": "arn:aws:ec2:us-east-1:123456789012:instance/i-0123456789abcdef0"
+              }
+            ],
+            "severity": "Medium",
+            "severity_id": 3,
+            "status": "New",
+            "status_id": 1,
+            "type_name": "Detection Finding: Create",
+            "type_uid": 200401
+          }
+        ]
+      }
+    },
+    "config_overrides": {
+      "APP_AUTO_CLOSE_RULES": "[{\"name\":\"auto-close-github-runner-new-binaries\",\"enabled\":true,\"filters\":{\"finding_types\":[\"Execution:Runtime/NewBinaryExecuted\"],\"resource_tags\":[{\"name\":\"component-type\",\"value\":\"github-action-runners\"}]},\"action\":{\"status_id\":5,\"comment\":\"Auto-closed: Expected behavior for GitHub Actions CI/CD runners\"},\"skip_notification\":true}]"
+    },
+    "expected_calls": [
+      {
+        "service": "securityhub",
+        "method": "PATCH",
+        "path": "/findingsv2/batchupdatev2"
+      }
+    ],
+    "mock_responses": [
+      {
+        "service": "securityhub",
+        "method": "PATCH",
+        "path": "/findingsv2/batchupdatev2",
+        "status_code": 200,
+        "body": "{\"ProcessedFindings\":[{\"Id\":\"arn:aws:guardduty:us-east-1:123456789012:detector/abc123/finding/finding-001\",\"ProductArn\":\"arn:aws:securityhub:us-east-1::productv2/aws/guardduty\"}],\"UnprocessedFindings\":[]}",
+        "description": "securityhub batch update findings v2 success"
+      }
+    ]
+  },
+  {
+    "name": "auto_close_inspector_low_severity_in_dev",
+    "description": "Auto-close low severity Inspector findings in dev account",
+    "event_payload": {
+      "version": "0",
+      "id": "test-event-2",
+      "detail-type": "Findings Imported V2",
+      "source": "aws.securityhub",
+      "account": "123456789012",
+      "time": "2025-10-03T21:00:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "findings": [
+          {
+            "activity_id": 1,
+            "activity_name": "Create",
+            "category_name": "Findings",
+            "category_uid": 2,
+            "class_name": "Vulnerability Finding",
+            "class_uid": 2002,
+            "cloud": {
+              "account": {
+                "type": "AWS Account",
+                "type_id": 10,
+                "uid": "123456789012"
+              },
+              "provider": "AWS",
+              "region": "us-east-1"
+            },
+            "finding_info": {
+              "created_time": 1759525200000,
+              "created_time_dt": "2025-10-03T21:00:00.000Z",
+              "title": "CVE-2024-12345 found in package example-package",
+              "types": [
+                "Software and Configuration Checks/Vulnerabilities/CVE"
+              ],
+              "uid": "arn:aws:inspector2:us-east-1:123456789012:finding/finding-002"
+            },
+            "metadata": {
+              "product": {
+                "name": "Inspector",
+                "uid": "arn:aws:securityhub:us-east-1::productv2/aws/inspector",
+                "vendor_name": "AWS"
+              },
+              "uid": "test-finding-002",
+              "version": "1.0.0"
+            },
+            "resources": [
+              {
+                "region": "us-east-1",
+                "type": "AwsEcrContainerImage",
+                "uid": "arn:aws:ecr:us-east-1:123456789012:repository/example-repo"
+              }
+            ],
+            "severity": "Low",
+            "severity_id": 2,
+            "status": "New",
+            "status_id": 1,
+            "type_name": "Vulnerability Finding: Create",
+            "type_uid": 200201
+          }
+        ]
+      }
+    },
+    "config_overrides": {
+      "APP_AUTO_CLOSE_RULES": "[{\"name\":\"suppress-inspector-low-in-dev\",\"enabled\":true,\"filters\":{\"product_name\":[\"Inspector\"],\"severity\":[\"Low\"],\"accounts\":[\"123456789012\"]},\"action\":{\"status_id\":3,\"comment\":\"Auto-suppressed: Low severity Inspector findings in dev account\"},\"skip_notification\":false}]",
+      "APP_SLACK_TOKEN": "xoxb-test-token",
+      "APP_SLACK_CHANNEL": "C01234TEST"
+    },
+    "expected_calls": [
+      {
+        "service": "securityhub",
+        "method": "PATCH",
+        "path": "/findingsv2/batchupdatev2"
+      },
+      {
+        "service": "slack",
+        "method": "POST",
+        "path": "/api/chat.postMessage"
+      }
+    ],
+    "mock_responses": [
+      {
+        "service": "securityhub",
+        "method": "PATCH",
+        "path": "/findingsv2/batchupdatev2",
+        "status_code": 200,
+        "body": "{\"ProcessedFindings\":[{\"Id\":\"arn:aws:inspector2:us-east-1:123456789012:finding/finding-002\",\"ProductArn\":\"arn:aws:securityhub:us-east-1::productv2/aws/inspector\"}],\"UnprocessedFindings\":[]}",
+        "description": "securityhub batch update findings v2 success"
+      },
+      {
+        "service": "slack",
+        "method": "POST",
+        "path": "/api/chat.postMessage",
+        "status_code": 200,
+        "body": "{\"ok\":true,\"channel\":\"C01234TEST\",\"ts\":\"1234567890.123456\"}",
+        "description": "slack notification sent successfully"
+      }
+    ]
+  },
+  {
+    "name": "no_match_sends_notification",
+    "description": "Finding that doesn't match any rule sends Slack notification",
+    "event_payload": {
+      "version": "0",
+      "id": "test-event-3",
+      "detail-type": "Findings Imported V2",
+      "source": "aws.securityhub",
+      "account": "999888777666",
+      "time": "2025-10-03T21:15:00Z",
+      "region": "us-west-2",
+      "detail": {
+        "findings": [
+          {
+            "activity_id": 1,
+            "activity_name": "Create",
+            "category_name": "Findings",
+            "category_uid": 2,
+            "class_name": "Detection Finding",
+            "class_uid": 2004,
+            "cloud": {
+              "account": {
+                "type": "AWS Account",
+                "type_id": 10,
+                "uid": "999888777666"
+              },
+              "provider": "AWS",
+              "region": "us-west-2"
+            },
+            "finding_info": {
+              "created_time": 1759526100000,
+              "created_time_dt": "2025-10-03T21:15:00.000Z",
+              "title": "Unrecognized malicious activity detected",
+              "types": [
+                "Threats",
+                "Trojan:EC2/DNSDataExfiltration"
+              ],
+              "uid": "arn:aws:guardduty:us-west-2:999888777666:detector/xyz789/finding/finding-003"
+            },
+            "metadata": {
+              "product": {
+                "name": "GuardDuty",
+                "uid": "arn:aws:securityhub:us-west-2::productv2/aws/guardduty",
+                "vendor_name": "AWS"
+              },
+              "uid": "test-finding-003",
+              "version": "1.6.0"
+            },
+            "resources": [
+              {
+                "data": {
+                  "instance_id": "i-9876543210fedcba0"
+                },
+                "region": "us-west-2",
+                "type": "AwsEc2Instance",
+                "uid": "arn:aws:ec2:us-west-2:999888777666:instance/i-9876543210fedcba0"
+              }
+            ],
+            "severity": "High",
+            "severity_id": 4,
+            "status": "New",
+            "status_id": 1,
+            "type_name": "Detection Finding: Create",
+            "type_uid": 200401
+          }
+        ]
+      }
+    },
+    "config_overrides": {
+      "APP_AUTO_CLOSE_RULES": "[{\"name\":\"auto-close-github-runner-new-binaries\",\"enabled\":true,\"filters\":{\"finding_types\":[\"Execution:Runtime/NewBinaryExecuted\"],\"resource_tags\":[{\"name\":\"component-type\",\"value\":\"github-action-runners\"}]},\"action\":{\"status_id\":5,\"comment\":\"Auto-closed: Expected behavior for GitHub Actions CI/CD runners\"},\"skip_notification\":true}]",
+      "APP_SLACK_TOKEN": "xoxb-test-token",
+      "APP_SLACK_CHANNEL": "C01234TEST"
+    },
+    "expected_calls": [
+      {
+        "service": "slack",
+        "method": "POST",
+        "path": "/api/chat.postMessage"
+      }
+    ],
+    "mock_responses": [
+      {
+        "service": "slack",
+        "method": "POST",
+        "path": "/api/chat.postMessage",
+        "status_code": 200,
+        "body": "{\"ok\":true,\"channel\":\"C01234TEST\",\"ts\":\"1234567890.123456\"}",
+        "description": "slack notification sent for unmatched high severity finding"
+      }
+    ]
+  },
+  {
+    "name": "multiple_rules_first_match_wins",
+    "description": "Test that first matching rule is applied when multiple rules could match",
+    "event_payload": {
+      "version": "0",
+      "id": "test-event-4",
+      "detail-type": "Findings Imported V2",
+      "source": "aws.securityhub",
+      "account": "123456789012",
+      "time": "2025-10-03T21:30:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "findings": [
+          {
+            "activity_id": 1,
+            "activity_name": "Create",
+            "category_name": "Findings",
+            "category_uid": 2,
+            "class_name": "Detection Finding",
+            "class_uid": 2004,
+            "cloud": {
+              "account": {
+                "type": "AWS Account",
+                "type_id": 10,
+                "uid": "123456789012"
+              },
+              "provider": "AWS",
+              "region": "us-east-1"
+            },
+            "finding_info": {
+              "created_time": 1759527000000,
+              "created_time_dt": "2025-10-03T21:30:00.000Z",
+              "title": "Port probe on unprotected port",
+              "types": [
+                "Threats",
+                "Recon:EC2/PortProbeUnprotectedPort"
+              ],
+              "uid": "arn:aws:guardduty:us-east-1:123456789012:detector/abc123/finding/finding-004"
+            },
+            "metadata": {
+              "product": {
+                "name": "GuardDuty",
+                "uid": "arn:aws:securityhub:us-east-1::productv2/aws/guardduty",
+                "vendor_name": "AWS"
+              },
+              "uid": "test-finding-004",
+              "version": "1.6.0"
+            },
+            "resources": [
+              {
+                "data": {
+                  "instance_id": "i-scanner-approved",
+                  "tags": [
+                    {
+                      "key": "ScannerApproved",
+                      "value": "true"
+                    }
+                  ]
+                },
+                "region": "us-east-1",
+                "tags": [
+                  {
+                    "name": "ScannerApproved",
+                    "value": "true"
+                  }
+                ],
+                "type": "AwsEc2Instance",
+                "uid": "arn:aws:ec2:us-east-1:123456789012:instance/i-scanner-approved"
+              }
+            ],
+            "severity": "Low",
+            "severity_id": 2,
+            "status": "New",
+            "status_id": 1,
+            "type_name": "Detection Finding: Create",
+            "type_uid": 200401
+          }
+        ]
+      }
+    },
+    "config_overrides": {
+      "APP_AUTO_CLOSE_RULES": "[{\"name\":\"resolve-approved-scanner-activity\",\"enabled\":true,\"filters\":{\"finding_types\":[\"Recon:EC2/PortProbeUnprotectedPort\"],\"resource_types\":[\"AwsEc2Instance\"],\"resource_tags\":[{\"name\":\"ScannerApproved\",\"value\":\"true\"}]},\"action\":{\"status_id\":4,\"comment\":\"Auto-resolved: Approved security scanner activity\"},\"skip_notification\":true},{\"name\":\"suppress-all-low-severity\",\"enabled\":true,\"filters\":{\"severity\":[\"Low\"]},\"action\":{\"status_id\":3,\"comment\":\"Auto-suppressed: Low severity finding\"},\"skip_notification\":true}]"
+    },
+    "expected_calls": [
+      {
+        "service": "securityhub",
+        "method": "PATCH",
+        "path": "/findingsv2/batchupdatev2"
+      }
+    ],
+    "mock_responses": [
+      {
+        "service": "securityhub",
+        "method": "PATCH",
+        "path": "/findingsv2/batchupdatev2",
+        "status_code": 200,
+        "body": "{\"ProcessedFindings\":[{\"Id\":\"arn:aws:guardduty:us-east-1:123456789012:detector/abc123/finding/finding-004\",\"ProductArn\":\"arn:aws:securityhub:us-east-1::productv2/aws/guardduty\"}],\"UnprocessedFindings\":[]}",
+        "description": "securityhub batch update findings v2 - status_id 3 (resolved)"
+      }
+    ]
+  },
+  {
+    "name": "disabled_rule_not_applied",
+    "description": "Test that disabled rules are not applied",
+    "event_payload": {
+      "version": "0",
+      "id": "test-event-5",
+      "detail-type": "Findings Imported V2",
+      "source": "aws.securityhub",
+      "account": "123456789012",
+      "time": "2025-10-03T21:45:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "findings": [
+          {
+            "activity_id": 1,
+            "activity_name": "Create",
+            "category_name": "Findings",
+            "category_uid": 2,
+            "class_name": "Detection Finding",
+            "class_uid": 2004,
+            "cloud": {
+              "account": {
+                "type": "AWS Account",
+                "type_id": 10,
+                "uid": "123456789012"
+              },
+              "provider": "AWS",
+              "region": "us-east-1"
+            },
+            "finding_info": {
+              "created_time": 1759527900000,
+              "created_time_dt": "2025-10-03T21:45:00.000Z",
+              "title": "Cryptocurrency mining detected",
+              "types": [
+                "Threats",
+                "CryptoCurrency:EC2/BitcoinTool.B!DNS"
+              ],
+              "uid": "arn:aws:guardduty:us-east-1:123456789012:detector/abc123/finding/finding-005"
+            },
+            "metadata": {
+              "product": {
+                "name": "GuardDuty",
+                "uid": "arn:aws:securityhub:us-east-1::productv2/aws/guardduty",
+                "vendor_name": "AWS"
+              },
+              "uid": "test-finding-005",
+              "version": "1.6.0"
+            },
+            "resources": [
+              {
+                "data": {
+                  "instance_id": "i-test-instance",
+                  "tags": [
+                    {
+                      "key": "Environment",
+                      "value": "test"
+                    }
+                  ]
+                },
+                "region": "us-east-1",
+                "tags": [
+                  {
+                    "name": "Environment",
+                    "value": "test"
+                  }
+                ],
+                "type": "AwsEc2Instance",
+                "uid": "arn:aws:ec2:us-east-1:123456789012:instance/i-test-instance"
+              }
+            ],
+            "severity": "High",
+            "severity_id": 4,
+            "status": "New",
+            "status_id": 1,
+            "type_name": "Detection Finding: Create",
+            "type_uid": 200401
+          }
+        ]
+      }
+    },
+    "config_overrides": {
+      "APP_AUTO_CLOSE_RULES": "[{\"name\":\"suppress-guardduty-cryptocurrency-mining-test-env\",\"enabled\":false,\"filters\":{\"finding_types\":[\"CryptoCurrency:EC2/BitcoinTool.B!DNS\"],\"product_name\":[\"GuardDuty\"],\"resource_tags\":[{\"name\":\"Environment\",\"value\":\"test\"}]},\"action\":{\"status_id\":3,\"comment\":\"Auto-suppressed: Cryptocurrency testing in isolated test environment\"},\"skip_notification\":true}]",
+      "APP_SLACK_TOKEN": "xoxb-test-token",
+      "APP_SLACK_CHANNEL": "C01234TEST"
+    },
+    "expected_calls": [
+      {
+        "service": "slack",
+        "method": "POST",
+        "path": "/api/chat.postMessage"
+      }
+    ],
+    "mock_responses": [
+      {
+        "service": "slack",
+        "method": "POST",
+        "path": "/api/chat.postMessage",
+        "status_code": 200,
+        "body": "{\"ok\":true,\"channel\":\"C01234TEST\",\"ts\":\"1234567890.123456\"}",
+        "description": "slack notification sent because rule was disabled"
+      }
+    ]
+  },
+  {
+    "name": "suppress_macie_findings_in_sandbox",
+    "description": "Auto-suppress Macie findings in sandbox account",
+    "event_payload": {
+      "version": "0",
+      "id": "test-event-6",
+      "detail-type": "Findings Imported V2",
+      "source": "aws.securityhub",
+      "account": "999888777666",
+      "time": "2025-10-03T22:00:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "findings": [
+          {
+            "activity_id": 1,
+            "activity_name": "Create",
+            "category_name": "Findings",
+            "category_uid": 2,
+            "class_name": "Detection Finding",
+            "class_uid": 2004,
+            "cloud": {
+              "account": {
+                "type": "AWS Account",
+                "type_id": 10,
+                "uid": "999888777666"
+              },
+              "provider": "AWS",
+              "region": "us-east-1"
+            },
+            "finding_info": {
+              "created_time": 1759528800000,
+              "created_time_dt": "2025-10-03T22:00:00.000Z",
+              "title": "Sensitive data discovered in S3 bucket",
+              "types": [
+                "Sensitive Data Identifications/PII"
+              ],
+              "uid": "arn:aws:macie2:us-east-1:999888777666:finding/finding-006"
+            },
+            "metadata": {
+              "product": {
+                "name": "Macie",
+                "uid": "arn:aws:securityhub:us-east-1::productv2/aws/macie",
+                "vendor_name": "AWS"
+              },
+              "uid": "test-finding-006",
+              "version": "1.0.0"
+            },
+            "resources": [
+              {
+                "region": "us-east-1",
+                "type": "AwsS3Bucket",
+                "uid": "arn:aws:s3:::sandbox-test-bucket"
+              }
+            ],
+            "severity": "Medium",
+            "severity_id": 3,
+            "status": "New",
+            "status_id": 1,
+            "type_name": "Detection Finding: Create",
+            "type_uid": 200401
+          }
+        ]
+      }
+    },
+    "config_overrides": {
+      "APP_AUTO_CLOSE_RULES": "[{\"name\":\"suppress-macie-findings-in-sandbox\",\"enabled\":true,\"filters\":{\"product_name\":[\"Macie\"],\"accounts\":[\"999888777666\"],\"severity\":[\"Low\",\"Medium\"]},\"action\":{\"status_id\":3,\"comment\":\"Auto-suppressed: Macie findings in sandbox account\"},\"skip_notification\":true}]"
+    },
+    "expected_calls": [
+      {
+        "service": "securityhub",
+        "method": "PATCH",
+        "path": "/findingsv2/batchupdatev2"
+      }
+    ],
+    "mock_responses": [
+      {
+        "service": "securityhub",
+        "method": "PATCH",
+        "path": "/findingsv2/batchupdatev2",
+        "status_code": 200,
+        "body": "{\"ProcessedFindings\":[{\"Id\":\"arn:aws:macie2:us-east-1:999888777666:finding/finding-006\",\"ProductArn\":\"arn:aws:securityhub:us-east-1::productv2/aws/macie\"}],\"UnprocessedFindings\":[]}",
+        "description": "securityhub batch update findings v2 success"
+      }
+    ]
+  }
+]
