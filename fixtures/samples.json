@@ -1,0 +1,699 @@
+[
+  {
+    "activity_id": 1,
+    "activity_name": "Create",
+    "category_name": "Findings",
+    "category_uid": 2,
+    "class_name": "Detection Finding",
+    "class_uid": 2004,
+    "cloud": {
+      "account": {
+        "type": "AWS Account",
+        "type_id": 10,
+        "uid": "123456789012"
+      },
+      "cloud_partition": "aws",
+      "provider": "AWS",
+      "region": "us-east-1"
+    },
+    "count": 1,
+    "evidences": [
+      {
+        "actor": {
+          "process": {
+            "ancestry": [
+              {
+                "created_time": 1759523833119,
+                "created_time_dt": "2025-10-03T20:37:13.119Z",
+                "name": "bash",
+                "path": "/usr/bin/bash",
+                "pid": 29856,
+                "uid": "0"
+              },
+              {
+                "created_time": 1759523833114,
+                "created_time_dt": "2025-10-03T20:37:13.114Z",
+                "name": "bash",
+                "path": "/usr/bin/bash",
+                "pid": 29852,
+                "uid": "0"
+              },
+              {
+                "created_time": 1759523833089,
+                "created_time_dt": "2025-10-03T20:37:13.089Z",
+                "name": "node",
+                "path": "/opt/actions-runner/externals/node20/bin/node",
+                "pid": 29845,
+                "uid": "0"
+              },
+              {
+                "created_time": 1759523818257,
+                "created_time_dt": "2025-10-03T20:36:58.257Z",
+                "name": "Runner.Worker",
+                "path": "/opt/actions-runner/bin/Runner.Worker",
+                "pid": 29660,
+                "uid": "0"
+              },
+              {
+                "created_time": 1759523219917,
+                "created_time_dt": "2025-10-03T20:26:59.917Z",
+                "name": "Runner.Listener",
+                "path": "/opt/actions-runner/bin/Runner.Listener",
+                "pid": 29200,
+                "uid": "0"
+              },
+              {
+                "created_time": 1759523219917,
+                "created_time_dt": "2025-10-03T20:26:59.917Z",
+                "name": "run-helper.sh",
+                "path": "/usr/bin/bash",
+                "pid": 29196,
+                "uid": "0"
+              },
+              {
+                "created_time": 1759523219907,
+                "created_time_dt": "2025-10-03T20:26:59.907Z",
+                "name": "run.sh",
+                "path": "/usr/bin/bash",
+                "pid": 29192,
+                "uid": "0"
+              },
+              {
+                "created_time": 1759523219427,
+                "created_time_dt": "2025-10-03T20:26:59.427Z",
+                "name": "sudo",
+                "path": "/usr/bin/sudo",
+                "pid": 29157,
+                "uid": "0"
+              },
+              {
+                "created_time": 1759523219417,
+                "created_time_dt": "2025-10-03T20:26:59.417Z",
+                "name": "sh",
+                "path": "/usr/bin/bash",
+                "pid": 29156,
+                "uid": "0"
+              },
+              {
+                "created_time": 1759523137407,
+                "created_time_dt": "2025-10-03T20:25:37.407Z",
+                "name": "systemd",
+                "path": "/usr/lib/systemd/systemd",
+                "pid": 1,
+                "uid": "0"
+              }
+            ],
+            "created_time": 1759523833716,
+            "created_time_dt": "2025-10-03T20:37:13.716Z",
+            "file": {
+              "hashes": [
+                {
+                  "algorithm": "SHA-256",
+                  "algorithm_id": 3,
+                  "value": "89c0435cec75278f84b62b848b8c0d3e15897d6947b6c59a49ddccd93d7312bf"
+                }
+              ],
+              "name": "kubectl",
+              "path": "/opt/actions-runner/_work/_tool/kind/v0.22.0/amd64/kubectl/bin/kubectl",
+              "type": "Unknown",
+              "type_id": 0
+            },
+            "name": "kubectl",
+            "parent_process": {
+              "created_time": 1759523833119,
+              "created_time_dt": "2025-10-03T20:37:13.119Z",
+              "file": {
+                "name": "bash",
+                "path": "/usr/bin/bash",
+                "type": "Unknown",
+                "type_id": 0
+              },
+              "name": "bash",
+              "parent_process": {
+                "uid": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+              },
+              "pid": 29856,
+              "uid": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+              "user": {
+                "uid": "0",
+                "uid_alt": "0"
+              }
+            },
+            "pid": 29877,
+            "uid": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+            "working_directory": "/opt/actions-runner/_work/platform/platform"
+          },
+          "user": {
+            "name": "",
+            "uid": "0",
+            "uid_alt": "0"
+          }
+        }
+      },
+      {
+        "file": {
+          "modified_time": 1759523833513,
+          "modified_time_dt": "2025-10-03T20:37:13.513Z",
+          "name": "UNKNOWN",
+          "type": "Unknown",
+          "type_id": 0
+        },
+        "process": {
+          "created_time": 1759523833458,
+          "created_time_dt": "2025-10-03T20:37:13.458Z",
+          "file": {
+            "hashes": [
+              {
+                "algorithm": "SHA-256",
+                "algorithm_id": 3,
+                "value": "76e9f863aaedea6159503cb01f074b9f0694a2eb3896ebec9f223dd47ac72595"
+              }
+            ],
+            "name": "UNKNOWN",
+            "path": "/usr/bin/curl",
+            "type": "Unknown",
+            "type_id": 0
+          },
+          "name": "curl",
+          "parent_process": {
+            "uid": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"
+          },
+          "pid": 29868,
+          "uid": "dddddddd-dddd-dddd-dddd-dddddddddddd",
+          "user": {
+            "name": "root",
+            "uid": "0",
+            "uid_alt": "0"
+          },
+          "working_directory": "/opt/actions-runner/_work/platform/platform"
+        }
+      }
+    ],
+    "finding_info": {
+      "analytic": {
+        "type": "Rule",
+        "type_id": 1,
+        "uid": "00000000000000000000000000000000"
+      },
+      "created_time": 1759524561464,
+      "created_time_dt": "2025-10-03T20:49:21.464Z",
+      "desc": "A process has executed a newly created binary.",
+      "first_seen_time": 1759523833911,
+      "first_seen_time_dt": "2025-10-03T20:37:13.911Z",
+      "last_seen_time": 1759523833911,
+      "last_seen_time_dt": "2025-10-03T20:37:13.911Z",
+      "modified_time": 1759524561464,
+      "modified_time_dt": "2025-10-03T20:49:21.464Z",
+      "product": {
+        "uid": "00000000000000000000000000000000"
+      },
+      "title": "A container has executed a newly created binary file.",
+      "types": [
+        "Threats",
+        "Execution:Runtime/NewBinaryExecuted"
+      ],
+      "uid": "arn:aws:guardduty:us-east-1:123456789012:detector/00000000000000000000000000000000/finding/ffffffffffffffffffffffffffffffff",
+      "uid_alt": "ffffffffffffffffffffffffffffffff"
+    },
+    "metadata": {
+      "product": {
+        "feature": {
+          "name": "RuntimeMonitoring"
+        },
+        "name": "GuardDuty",
+        "uid": "arn:aws:securityhub:us-east-1::productv2/aws/guardduty",
+        "vendor_name": "AWS"
+      },
+      "profiles": [
+        "cloud",
+        "datetime"
+      ],
+      "uid": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "version": "1.6.0"
+    },
+    "remediation": {
+      "desc": "Please review the remediation guidance provided in the referenced documentation",
+      "references": [
+        "https://docs.aws.amazon.com/guardduty/latest/ug/findings-runtime-monitoring.html#execution-runtime-newbinaryexecuted"
+      ]
+    },
+    "resources": [
+      {
+        "cloud_partition": "aws",
+        "data": {
+          "availability_zone": "us-east-1b",
+          "iam_instance_profile": {
+            "arn": "arn:aws:iam::123456789012:instance-profile/example-instance-profile/example-runner-profile",
+            "id": "AIDACKCEVSQ6C2EXAMPLE"
+          },
+          "image_description": "Amazon Linux 2023 AMI 2023.7.20250414.0 x86_64 HVM kernel-6.1",
+          "image_id": "ami-0e449927258d45bc4",
+          "instance_id": "i-0123456789abcdef0",
+          "instance_state": "running",
+          "instance_type": "c5d.2xlarge",
+          "launch_time": 1759523129000,
+          "network_interfaces": [
+            {
+              "network_interface_id": "eni-0123456789abcdef0",
+              "private_dns_name": "ip-10-0-0-100.ec2.internal",
+              "private_ip_address": "10.0.0.100",
+              "private_ip_addresses": [
+                {
+                  "private_dns_name": "ip-10-0-0-100.ec2.internal",
+                  "private_ip_address": "10.0.0.100"
+                }
+              ],
+              "public_dns_name": "ec2-1-2-3-4.compute-1.amazonaws.com",
+              "public_ip": "1.2.3.4",
+              "security_groups": [
+                {
+                  "group_id": "sg-0123456789abcdef0",
+                  "group_name": "example-security-group"
+                }
+              ],
+              "subnet_id": "subnet-0123456789abcdef0",
+              "vpc_id": "vpc-0123456789abcdef0"
+            }
+          ],
+          "tags": [
+            {
+              "key": "Name",
+              "value": "example-action-runner"
+            },
+            {
+              "key": "component-type",
+              "value": "github-action-runners"
+            },
+            {
+              "key": "environment",
+              "value": "production"
+            }
+          ]
+        },
+        "name": "i-0123456789abcdef0",
+        "owner": {
+          "account": {
+            "type": "AWS Account",
+            "type_id": 10,
+            "uid": "123456789012"
+          }
+        },
+        "region": "us-east-1",
+        "tags": [
+          {
+            "name": "Name",
+            "value": "example-action-runner"
+          },
+          {
+            "name": "component-type",
+            "value": "github-action-runners"
+          },
+          {
+            "name": "environment",
+            "value": "production"
+          }
+        ],
+        "type": "AWS::EC2::Instance",
+        "uid": "i-0123456789abcdef0"
+      }
+    ],
+    "severity": "Medium",
+    "severity_id": 3,
+    "status": "New",
+    "status_id": 1,
+    "time": 1759524561464,
+    "time_dt": "2025-10-03T20:49:21.464Z",
+    "type_name": "Detection Finding: Create",
+    "type_uid": 200401,
+    "vendor_attributes": {
+      "severity": "Medium",
+      "severity_id": 3
+    }
+  },
+  {
+    "activity_id": 2,
+    "activity_name": "Update",
+    "category_name": "Findings",
+    "category_uid": 2,
+    "class_name": "Compliance Finding",
+    "class_uid": 2003,
+    "cloud": {
+      "account": {
+        "uid": "123456789012"
+      },
+      "provider": "AWS",
+      "region": "us-east-1"
+    },
+    "compliance": {
+      "assessments": [
+        {
+          "desc": "AWS Config isn't enabled with the configuration recorder turned on.",
+          "meets_criteria": false,
+          "name": "CONFIG_RECORDER_DISABLED"
+        }
+      ],
+      "control": "Config.1",
+      "control_parameters": [
+        {
+          "name": "includeConfigServiceLinkedRoleCheck",
+          "values": [
+            "true"
+          ]
+        }
+      ],
+      "requirements": [
+        "CIS AWS Foundations 2.5"
+      ],
+      "standards": [
+        "ruleset/cis-aws-foundations-benchmark/v/1.2.0"
+      ],
+      "status": "Fail",
+      "status_id": 3
+    },
+    "finding_info": {
+      "created_time": 1750730000501,
+      "created_time_dt": "2025-06-24T01:53:20.501Z",
+      "desc": "AWS Config is a web service that performs configuration management of supported AWS resources within your account and delivers log files to you. The recorded information includes the configuration item (AWS resource), relationships between configuration items (AWS resources), and any configuration changes between resources. It is recommended to enable AWS Config in all regions.",
+      "first_seen_time": 1750730000501,
+      "first_seen_time_dt": "2025-06-24T01:53:20.501Z",
+      "last_seen_time": 1762155117235,
+      "last_seen_time_dt": "2025-11-03T07:31:57.235Z",
+      "modified_time": 1762155117235,
+      "modified_time_dt": "2025-11-03T07:31:57.235Z",
+      "title": "2.5 AWS Config should be enabled and use the service-linked role for resource recording",
+      "types": [
+        "Software and Configuration Checks/Industry and Regulatory Standards/CIS AWS Foundations Benchmark",
+        "Posture Management"
+      ],
+      "uid": "arn:aws:securityhub:us-east-1:123456789012:subscription/cis-aws-foundations-benchmark/v/1.2.0/2.5/finding/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+    },
+    "metadata": {
+      "product": {
+        "name": "Security Hub",
+        "uid": "arn:aws:securityhub:us-east-1::productv2/aws/securityhub",
+        "vendor_name": "AWS"
+      },
+      "profiles": [
+        "cloud",
+        "datetime"
+      ],
+      "uid": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "version": "1.6.0"
+    },
+    "remediation": {
+      "desc": "For information on how to correct this issue, consult the AWS Security Hub controls documentation.",
+      "references": [
+        "https://docs.aws.amazon.com/console/securityhub/Config.1/remediation"
+      ]
+    },
+    "resources": [
+      {
+        "cloud_partition": "aws",
+        "owner": {
+          "account": {
+            "uid": "123456789012"
+          }
+        },
+        "region": "us-east-1",
+        "type": "AWS::::Account",
+        "uid": "123456789012"
+      }
+    ],
+    "severity": "Critical",
+    "severity_id": 5,
+    "status": "New",
+    "status_id": 1,
+    "time": 1762155117235,
+    "time_dt": "2025-11-03T07:31:57.235Z",
+    "type_name": "Compliance Finding: Update",
+    "type_uid": 200302,
+    "vendor_attributes": {
+      "severity": "Critical",
+      "severity_id": 5
+    }
+  },
+  {
+    "activity_id": 3,
+    "activity_name": "Close",
+    "category_name": "Findings",
+    "category_uid": 2,
+    "class_name": "Detection Finding",
+    "class_uid": 2004,
+    "cloud": {
+      "account": {
+        "name": "core-tools",
+        "type": "AWS Account",
+        "type_id": 10,
+        "uid": "123456789012"
+      },
+      "cloud_partition": "aws",
+      "provider": "AWS",
+      "region": "us-east-1"
+    },
+    "count": 1,
+    "evidences": [
+      {
+        "actor": {
+          "process": {
+            "ancestry": [
+              {
+                "created_time": 1763766647283,
+                "created_time_dt": "2025-11-21T23:10:47.283Z",
+                "name": "systemd",
+                "path": "/usr/lib/systemd/systemd",
+                "pid": 2561,
+                "uid": "0"
+              },
+              {
+                "created_time": 1763766647018,
+                "created_time_dt": "2025-11-21T23:10:47.018Z",
+                "name": "init",
+                "path": "/usr/lib/systemd/systemd",
+                "pid": 2264,
+                "uid": "0"
+              }
+            ],
+            "created_time": 1763766647284,
+            "created_time_dt": "2025-11-21T23:10:47.284Z",
+            "file": {
+              "name": "(sd-mkdcreds)",
+              "path": "/usr/lib/systemd/systemd",
+              "type": "Unknown",
+              "type_id": 0
+            },
+            "name": "(sd-mkdcreds)",
+            "parent_process": {
+              "created_time": 1763766647283,
+              "created_time_dt": "2025-11-21T23:10:47.283Z",
+              "file": {
+                "name": "systemd",
+                "path": "/usr/lib/systemd/systemd",
+                "type": "Unknown",
+                "type_id": 0
+              },
+              "name": "systemd",
+              "parent_process": {
+                "uid": "e9714b77-3b27-8d9b-d9b5-a34c955e547b"
+              },
+              "pid": 2561,
+              "uid": "f52d23e5-d48b-79e1-b35b-798e312d2de4",
+              "user": {
+                "uid": "0",
+                "uid_alt": "0"
+              }
+            },
+            "pid": 2563,
+            "uid": "6d225b47-c1cb-7fa9-967e-8e79d89616ef",
+            "working_directory": "/"
+          },
+          "user": {
+            "name": "",
+            "uid": "0",
+            "uid_alt": "0"
+          }
+        }
+      }
+    ],
+    "finding_info": {
+      "analytic": {
+        "type": "Rule",
+        "type_id": 1,
+        "uid": "12cbda91026ae3393af947729d385166"
+      },
+      "created_time": 1763766928515,
+      "created_time_dt": "2025-11-21T23:15:28.515Z",
+      "desc": "A container has mounted a host directory.",
+      "first_seen_time": 1763766647284,
+      "first_seen_time_dt": "2025-11-21T23:10:47.284Z",
+      "last_seen_time": 1763766647284,
+      "last_seen_time_dt": "2025-11-21T23:10:47.284Z",
+      "modified_time": 1763766928515,
+      "modified_time_dt": "2025-11-21T23:15:28.515Z",
+      "product": {
+        "uid": "12cbda91026ae3393af947729d385166"
+      },
+      "title": "A container has mounted a host directory.",
+      "types": [
+        "Threats",
+        "PrivilegeEscalation:Runtime/ContainerMountsHostDirectory"
+      ],
+      "uid": "arn:aws:guardduty:us-east-1:205014383633:detector/12cbda91026ae3393af947729d385166/finding/d6cd5459c241b902f2aaff9db607c941",
+      "uid_alt": "d6cd5459c241b902f2aaff9db607c941"
+    },
+    "metadata": {
+      "extensions": [
+        {
+          "name": "aws",
+          "uid": "998",
+          "version": "1.0.0"
+        }
+      ],
+      "product": {
+        "feature": {
+          "name": "RuntimeMonitoring"
+        },
+        "name": "GuardDuty",
+        "uid": "arn:aws:securityhub:us-east-1::productv2/aws/guardduty",
+        "vendor_name": "AWS"
+      },
+      "profiles": [
+        "cloud",
+        "container",
+        "datetime",
+        "aws/cloud_resources"
+      ],
+      "uid": "5121a512c39d657e0dd78133fc41ad6bdd145b7cf5a306f52bda76f5883fa500",
+      "version": "1.6.0"
+    },
+    "observables": [
+      {
+        "name": "fileSystemType",
+        "type": "Other",
+        "type_id": 99,
+        "value": ""
+      },
+      {
+        "name": "flags",
+        "type": "Other",
+        "type_id": 99,
+        "value": "MS_MOVE"
+      },
+      {
+        "name": "mountSource",
+        "type": "File",
+        "type_id": 24,
+        "value": "/dev/shm"
+      },
+      {
+        "name": "mountTarget",
+        "type": "File",
+        "type_id": 24,
+        "value": "/run/credentials/systemd-sysctl.service"
+      }
+    ],
+    "remediation": {
+      "desc": "Please review the remediation guidance provided in the referenced documentation",
+      "references": [
+        "https://docs.aws.amazon.com/guardduty/latest/ug/findings-runtime-monitoring.html#privilegeescalation-runtime-containermountshostdirectory"
+      ]
+    },
+    "resources": [
+      {
+        "cloud_partition": "aws",
+        "device": {
+          "container": {
+            "image": {
+              "name": "kindest/node:v1.30.6@sha256:b6d08db72079ba5ae1f4a88a09025c0a904af3b52387643c285442afb05ab994",
+              "uid": "sha256:02b360c27dd065ba9fc70553ef8511f3713c5de3189c21cd15c218c4102e122e"
+            },
+            "name": "/default-control-plane",
+            "runtime": "docker",
+            "uid": "287ae865fc4257511514453a78a03743c5c63a40ab2a2a2f81579745b1febf41"
+          },
+          "name": "/default-control-plane",
+          "type": "Virtual",
+          "type_id": 6,
+          "uid": "287ae865fc4257511514453a78a03743c5c63a40ab2a2a2f81579745b1febf41"
+        },
+        "name": "/default-control-plane",
+        "owner": {
+          "account": {
+            "type": "AWS Account",
+            "type_id": 10,
+            "uid": "123456789012"
+          }
+        },
+        "region": "us-east-1",
+        "type": "AWS::Container::Container",
+        "uid": "287ae865fc4257511514453a78a03743c5c63a40ab2a2a2f81579745b1febf41"
+      },
+      {
+        "cloud_partition": "aws",
+        "device": {
+          "image": {
+            "uid": "ami-05c5514f9b7e67f21"
+          },
+          "instance_profile": {
+            "uid": "AIPAS7O6PHQIX3MFNMBF3",
+            "uid_alt": "arn:aws:iam::205014383633:instance-profile/mpz-core-use1-tools-runs-on-EC2InstanceProfile-6TBpBHJ2Hwrr"
+          },
+          "launch_time": 1763766604000,
+          "launch_time_dt": "2025-11-21T23:10:04Z",
+          "model": "m8a.2xlarge",
+          "network_interfaces": [
+            {
+              "ip": "3.84.206.192",
+              "security_groups": [
+                {
+                  "name": "mpz-core-use1-tools-runs-on--7Z0s-20251118113053677800000001",
+                  "uid": "sg-0c9f4484176f9ea9c"
+                }
+              ],
+              "uid": "eni-09b95b87c322afee4"
+            }
+          ],
+          "type": "Virtual",
+          "type_id": 6,
+          "uid": "i-0d7663df710a0f17a"
+        },
+        "owner": {
+          "account": {
+            "type": "AWS Account",
+            "type_id": 10,
+            "uid": "123456789012"
+          }
+        },
+        "region": "us-east-1",
+        "tags": [
+          {
+            "name": "Name",
+            "value": "runs-on-ci-runner"
+          },
+          {
+            "name": "provider",
+            "value": "runs-on.com"
+          },
+          {
+            "name": "environment",
+            "value": "production"
+          }
+        ],
+        "type": "AWS::EC2::Instance",
+        "uid": "i-0d7663df710a0f17a",
+        "zone": "us-east-1b"
+      }
+    ],
+    "severity": "Medium",
+    "severity_id": 3,
+    "status": "New",
+    "status_id": 1,
+    "time": 1763766928515,
+    "time_dt": "2025-11-21T23:15:28.515Z",
+    "type_name": "Detection Finding: Close",
+    "type_uid": 200403,
+    "vendor_attributes": {
+      "severity": "Medium",
+      "severity_id": 3
+    }
+  }
+]
