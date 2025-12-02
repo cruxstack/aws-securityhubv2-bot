@@ -160,6 +160,16 @@ func (a *App) Process(ctx context.Context, evt events.SecurityHubEventInput) err
 			a.Logger.Debug("finding matched rule", "rule", matchedRule.Name)
 		}
 
+		// skip if finding is already in the desired state to avoid feedback loops
+		if int32(finding.StatusID) == matchedRule.Action.StatusID {
+			if a.Config.DebugEnabled {
+				a.Logger.Debug("finding already in desired state, skipping update",
+					"uid", finding.Metadata.UID,
+					"status_id", finding.StatusID)
+			}
+			return nil
+		}
+
 		err := a.CloseFinding(ctx, finding, matchedRule.Action.StatusID, matchedRule.Action.Comment)
 		if err != nil {
 			return errors.Wrap(err, "failed to auto-close finding")
